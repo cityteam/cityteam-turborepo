@@ -1,0 +1,16 @@
+{
+  "files": [
+    "browser/jest-preset.ts",
+    "node/jest-preset.ts"
+  ],
+  "license": "Apache-2.0",
+  "name": "@repo/jest-presets",
+  "private": true,
+  "version": "0.0.0",
+  "devDependencies": {
+    "@types/jest": "catalog:jest30",
+    "jest": "catalog:jest30",
+    "jest-environment-jsdom": "catalog:jest30",
+    "ts-jest": "catalog:jest30"
+  }
+}
