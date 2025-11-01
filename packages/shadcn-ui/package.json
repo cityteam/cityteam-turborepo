@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "class-variance-authority": "catalog:class-variance-authority",
+    "clsx": "catalog:clsx",
+    "lucide-react": "catalog:lucide-react",
+    "tailwind-merge": "catalog:tailwind4",
+    "tailwindcss": "catalog:tailwind4",
+    "tailwindcss-animate": "catalog:tailwind4"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/jest-presets": "workspace:*",
+    "@repo/typescript-config": "workspace:*"
+  },
+  "exports": {
+    "./globals.css": "./src/styles/globals.css",
+    "./components/*": "./dist/components/*.js",
+    "./hooks/*": "./dist/hooks/*.js",
+    "./lib/*": "./dist/lib/*.js"
+  },
+  "jest": {
+    "preset": "@repo/jest-presets/node"
+  },
+  "license": "Apache-2.0",
+  "name": "@repo/shadcn-ui",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "check-types": "tsc --noEmit",
+    "dev": "pnpm run dev:tsc && pnpm run dev:styles",
+    "dev:styles": "tailwindcss -i ./src/styles/globals.css -o ./dist/globals.css --watch",
+    "dev:tsc": "tsc --watch",
+    "lint": "eslint . --max-warnings 0",
+    "test": "jest --watch"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}
