@@ -4,9 +4,9 @@ packages:
 
 catalogs:
   class-variance-authority:
-    class-variance-authority: ^0.7.1
+    class-variance-authority: 0.7.1
   clsx:
-    clsx: ^2.1.1
+    clsx: 2.1.1
   cmdk:
     cmdk: 1.1.1
   date-fns:

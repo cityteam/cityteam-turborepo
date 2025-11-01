@@ -5,7 +5,8 @@
     "lucide-react": "catalog:lucide-react",
     "tailwind-merge": "catalog:tailwind4",
     "tailwindcss": "catalog:tailwind4",
-    "tailwindcss-animate": "catalog:tailwind4"
+    "tailwindcss-animate": "catalog:tailwind4",
+    "tw-animate-css": "catalog:tailwind4"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
