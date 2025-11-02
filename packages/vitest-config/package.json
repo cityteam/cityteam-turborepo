@@ -1,0 +1,17 @@
+{
+  "exports": {
+    "./base": "./base.js",
+    "./ui": "./ui.js"
+  },
+  "license": "Apache-2.0",
+  "name": "@repo/vitest-config",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@vitest/coverage-v8": "catalog:vitest",
+    "@vitest/ui": "catalog:vitest",
+    "vitest": "catalog:vitest",
+    "vite-tsconfig-paths": "catalog:vitest"
+  }
+}

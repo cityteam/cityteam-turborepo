@@ -1,0 +1,33 @@
+{
+  "exports": {
+    "./*": "./dist/index.js"
+  },
+  "license": "Apache-2.0",
+  "name": "@repo/shared-utils",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "check-types": "tsc --noEmit",
+    "coverage": "open coverage/index.html",
+    "dev": "tsc --watch",
+    "lint": "eslint . --max-warnings 0",
+    "test": "vitest watch",
+    "test:ci": "vitest run"
+  },
+  "type": "module",
+  "version": "0.0.0",
+  "dependencies": {
+    "date-fns": "catalog:date-fns",
+    "pino": "catalog:pino",
+    "zod": "catalog:zod"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/vitest-config": "workspace:*",
+    "@vitest/coverage-v8": "catalog:vitest",
+    "eslint": "catalog:eslint",
+    "typescript": "catalog:typescript5",
+    "vitest": "catalog:vitest"
+  }
+}
