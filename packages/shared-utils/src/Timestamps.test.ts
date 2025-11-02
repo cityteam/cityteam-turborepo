@@ -8,7 +8,7 @@ import { describe, expect, it } from "vitest";
 
 // Internal Modules ----------------------------------------------------------
 
-import { Timestamps } from "./Timestamps.js";
+import { Timestamps } from "./Timestamps";
 
 // Test Methods --------------------------------------------------------------
 

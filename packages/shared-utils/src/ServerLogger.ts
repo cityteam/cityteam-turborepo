@@ -10,7 +10,7 @@ import pino from "pino";
 
 // Internal Modules ----------------------------------------------------------
 
-import { Timestamps } from "@repo/shared-utils/Timestamps";
+import { Timestamps } from "./Timestamps";
 
 // Public Objects -----------------------------------------------------------
 

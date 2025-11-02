@@ -9,7 +9,7 @@ import { addMonths, endOfMonth, startOfMonth, subMonths } from "date-fns";
 
 // Internal Modules ----------------------------------------------------------
 
-import { Dates } from "./Dates.js";
+import { Dates } from "./Dates";
 
 // Public Objects ------------------------------------------------------------
 
