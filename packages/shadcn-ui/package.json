@@ -50,7 +50,6 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
-    "@repo/jest-presets": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@tailwindcss/cli": "catalog:tailwind4",
     "@tailwindcss/postcss": "catalog:tailwind4",
@@ -59,9 +58,7 @@
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
     "eslint": "catalog:eslint",
-    "jest": "catalog:jest30",
     "tailwindcss": "catalog:tailwind4",
-    "ts-jest": "catalog:jest30",
     "typescript": "catalog:typescript5"
   },
   "exports": {
@@ -69,9 +66,6 @@
     "./components/*": "./dist/components/*.js",
     "./hooks/*": "./dist/hooks/*.js",
     "./lib/*": "./dist/lib/*.js"
-  },
-  "jest": {
-    "preset": "@repo/jest-presets/node"
   },
   "license": "Apache-2.0",
   "name": "@repo/shadcn-ui",
@@ -82,9 +76,7 @@
     "dev": "pnpm run dev:tsc && pnpm run dev:styles",
     "dev:styles": "tailwindcss -i ./src/styles/globals.css -o ./dist/globals.css --watch",
     "dev:tsc": "tsc --watch",
-    "lint": "eslint . --max-warnings 0",
-    "patch-shadcn-imports": "node ./scripts/patch-shadcn-imports-safer.cjs",
-    "test": "jest --watch"
+    "patch-shadcn-imports": "node ./scripts/patch-shadcn-imports-safer.cjs"
   },
   "type": "module",
   "version": "0.0.0"

@@ -121,6 +121,9 @@ catalogs:
     '@tanstack/react-form':
       specifier: ^1.23.8
       version: 1.23.8
+    '@tanstack/react-table':
+      specifier: ^8.21.3
+      version: 8.21.3
   typescript5:
     typescript:
       specifier: ^5.9.3
@@ -241,9 +244,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@repo/jest-presets':
-        specifier: workspace:*
-        version: link:../jest-presets
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
@@ -253,9 +253,6 @@ importers:
       '@tailwindcss/postcss':
         specifier: catalog:tailwind4
         version: 4.1.16
-      '@types/jest':
-        specifier: catalog:jest30
-        version: 30.0.0
       '@types/node':
         specifier: catalog:node24
         version: 24.9.2
@@ -268,15 +265,70 @@ importers:
       eslint:
         specifier: catalog:eslint
         version: 9.39.0(jiti@2.6.1)
-      jest:
-        specifier: catalog:jest30
-        version: 30.2.0(@types/node@24.9.2)
       tailwindcss:
         specifier: catalog:tailwind4
         version: 4.1.16
-      ts-jest:
-        specifier: catalog:jest30
-        version: 29.4.5(@babel/core@7.28.5)(@jest/transform@30.2.0)(@jest/types@30.2.0)(babel-jest@30.2.0(@babel/core@7.28.5))(jest-util@30.2.0)(jest@30.2.0(@types/node@24.9.2))(typescript@5.9.3)
+      typescript:
+        specifier: catalog:typescript5
+        version: 5.9.3
+
+  packages/shadcn-tanstack-table:
+    dependencies:
+      '@repo/shadcn-ui':
+        specifier: workspace:*
+        version: link:../shadcn-ui
+      '@repo/shared-utils':
+        specifier: workspace:*
+        version: link:../shared-utils
+      '@tanstack/react-table':
+        specifier: catalog:tanstack
+        version: 8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      clsx:
+        specifier: catalog:clsx
+        version: 2.1.1
+      lucide-react:
+        specifier: catalog:lucide-react
+        version: 0.552.0(react@19.2.0)
+      postcss:
+        specifier: catalog:postcss
+        version: 8.5.6
+      react:
+        specifier: catalog:react19
+        version: 19.2.0
+      react-dom:
+        specifier: catalog:react19
+        version: 19.2.0(react@19.2.0)
+      zod:
+        specifier: catalog:zod
+        version: 4.1.12
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@tailwindcss/cli':
+        specifier: catalog:tailwind4
+        version: 4.1.16
+      '@tailwindcss/postcss':
+        specifier: catalog:tailwind4
+        version: 4.1.16
+      '@types/node':
+        specifier: catalog:node24
+        version: 24.9.2
+      '@types/react':
+        specifier: catalog:react19
+        version: 19.2.2
+      '@types/react-dom':
+        specifier: catalog:react19
+        version: 19.2.2(@types/react@19.2.2)
+      eslint:
+        specifier: catalog:eslint
+        version: 9.39.0(jiti@2.6.1)
+      tailwindcss:
+        specifier: catalog:tailwind4
+        version: 4.1.16
       typescript:
         specifier: catalog:typescript5
         version: 5.9.3
@@ -428,9 +480,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@repo/jest-presets':
-        specifier: workspace:*
-        version: link:../jest-presets
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
@@ -455,15 +504,9 @@ importers:
       eslint:
         specifier: catalog:eslint
         version: 9.39.0(jiti@2.6.1)
-      jest:
-        specifier: catalog:jest30
-        version: 30.2.0(@types/node@24.9.2)
       tailwindcss:
         specifier: catalog:tailwind4
         version: 4.1.16
-      ts-jest:
-        specifier: catalog:jest30
-        version: 29.4.5(@babel/core@7.28.5)(@jest/transform@30.2.0)(@jest/types@30.2.0)(babel-jest@30.2.0(@babel/core@7.28.5))(jest-util@30.2.0)(jest@30.2.0(@types/node@24.9.2))(typescript@5.9.3)
       typescript:
         specifier: catalog:typescript5
         version: 5.9.3
@@ -2060,8 +2103,19 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
+  '@tanstack/react-table@8.21.3':
+    resolution: {integrity: sha512-5nNMTSETP4ykGegmVkhjcS8tTLW6Vl4axfEGQN3v0zdHYbK4UfoqfPChclTrJ4EoK9QynqAu9oUf8VEmrpZ5Ww==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+
   '@tanstack/store@0.7.7':
     resolution: {integrity: sha512-xa6pTan1bcaqYDS9BDpSiS63qa6EoDkPN9RsRaxHuDdVDNntzq3xNwR5YKTU/V3SkSyC9T4YVOPh2zRQN0nhIQ==}
+
+  '@tanstack/table-core@8.21.3':
+    resolution: {integrity: sha512-ldZXEhOBb8Is7xLs01fR3YEc3DERiz5silj8tnGkFZytt1abEvl/GhUmCE0PMLaMPTa3Jk4HbKmRlHmu+gCftg==}
+    engines: {node: '>=12'}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -6278,7 +6332,15 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
       use-sync-external-store: 1.6.0(react@19.2.0)
 
+  '@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@tanstack/table-core': 8.21.3
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
   '@tanstack/store@0.7.7': {}
+
+  '@tanstack/table-core@8.21.3': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
