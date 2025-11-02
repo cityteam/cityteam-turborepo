@@ -1,13 +1,17 @@
 {
-  "extends": "@repo/typescript-config/react-library",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "paths": {
-      "@shadcn-ui/*": ["src/*"]
+      "@repo/shadcn-ui/*": ["src/*"]
     },
-    "rootDir": "src",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
   },
-  "exclude": ["node_modules", "dist"],
-  "include": ["src"],
+  "include": ["src"]
 }
