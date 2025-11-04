@@ -1,0 +1,33 @@
+{
+  "description": "Prisma client and generated models for the Checkins application database",
+  "exports": {
+    ".": "./dist/client.js"
+  },
+  "license": "Apache-2.0",
+  "name": "@repo/db-checkins",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "db-checkins:deploy": "prisma migrate deploy",
+    "db-checkins:generate": "dotenvx run -f .env -- prisma generate",
+    "db-checkins:migrate": "dotenvx run -f .env -- prisma migrate dev --skip-generate",
+    "db-checkins:migrate:test": "dotenvx run -f .env.test -- prisma migrate dev --skip-generate",
+    "db-checkins:studio": "dotenvx run -f .env -- prisma studio --port 4200",
+    "db-checkins:studio:test": "dotenvx run -f .env.test -- prisma studio --port 4201"
+  },
+  "type": "module",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "catalog:node24",
+    "prisma": "catalog:prisma6",
+    "tsup": "catalog:tsup",
+    "tsx": "catalog:tsx"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "catalog:dotenvx",
+    "@prisma/adapter-pg": "catalog:prisma6",
+    "@prisma/client": "catalog:prisma6"
+  }
+}

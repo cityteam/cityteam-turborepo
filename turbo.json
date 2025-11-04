@@ -1,15 +1,21 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
-  "globalEnv": ["NODE_ENV"],
+  "globalEnv": [ "NODE_ENV", "DATABASE_URL" ],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "!.turbo/**"]
+      "dependsOn": [ "^build" ],
+      "inputs": [ "$TURBO_DEFAULT$", ".env*" ],
+      "outputs": [ ".next/**", "!.next/cache/**", "dist/**", "!.turbo/**" ]
     },
     "check-types": {
       "dependsOn": ["^check-types"]
+    },
+    "db-checkins:studio": {
+      "dependsOn": ["^build"]
+    },
+    "db-checkins:studio:test": {
+      "dependsOn": ["^build"]
     },
     "dev": {
       "cache": false,

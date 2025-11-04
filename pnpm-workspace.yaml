@@ -11,6 +11,8 @@ catalogs:
     cmdk: 1.1.1
   date-fns:
     date-fns: 4.1.0
+  dotenvx:
+    "@dotenvx/dotenvx": ^1.51.0
   eslint:
     '@eslint/js': ^9.39.0
     '@next/eslint-plugin-next': ^16.0.1
@@ -40,8 +42,12 @@ catalogs:
     postcss: ^8.5.6
   prettier:
     prettier: ^3.6.2
+  prisma6:
+    "@prisma/adapter-pg": ^6.18.0
+    "@prisma/client": ^6.18.0
+    prisma: ^6.18.0
   react19:
-    '@types/react': ^19.2.2
+    "@types/react": ^19.2.2
     '@types/react-dom': ^19.2.2
     react: ^19.2.0
     react-dom: ^19.2.0
@@ -55,6 +61,10 @@ catalogs:
   tanstack:
     '@tanstack/react-form': ^1.23.8
     '@tanstack/react-table': ^8.21.3
+  tsup:
+    tsup: ^8.5.0
+  tsx:
+    tsx: ^4.20.6
   typescript5:
     typescript: ^5.9.3
   vitest:
