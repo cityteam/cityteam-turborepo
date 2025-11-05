@@ -59,8 +59,10 @@ model Facility {
   city      String   @db.Text
   /// Created at timestamp
   createdAt DateTime @default(now()) @map("created_at")
+  /// Email address for this Facility
+  email     String?  @db.Text
   /// Name of this Facility
-  name      String   @db.Text
+  name      String   @unique @db.Text
   /// Phone number for this Facility
   phone     String?  @db.Text
   /// State for this Facility

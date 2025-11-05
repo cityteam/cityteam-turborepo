@@ -12,6 +12,7 @@
     "db-checkins:generate": "dotenvx run -f .env -- prisma generate",
     "db-checkins:migrate": "dotenvx run -f .env -- prisma migrate dev --skip-generate",
     "db-checkins:migrate:test": "dotenvx run -f .env.test -- prisma migrate dev --skip-generate",
+    "db-checkins:seed": "dotenvx run -f .env -- tsx ./src/SeedActions.ts",
     "db-checkins:studio": "dotenvx run -f .env -- prisma studio --port 4200",
     "db-checkins:studio:test": "dotenvx run -f .env.test -- prisma studio --port 4201"
   },
@@ -22,6 +23,7 @@
     "@repo/typescript-config": "workspace:*",
     "@types/node": "catalog:node24",
     "prisma": "catalog:prisma6",
+    "ts-node": "catalog:ts-node",
     "tsup": "catalog:tsup",
     "tsx": "catalog:tsx"
   },

@@ -71,6 +71,8 @@ catalogs:
   tanstack:
     '@tanstack/react-form': 1.23.8
     '@tanstack/react-table': 8.21.3
+  ts-node:
+    ts-node: 10.9.1
   tsup:
     tsup: 8.5.0
   tsx:
