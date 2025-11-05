@@ -92,9 +92,9 @@ async function main() {
   console.log(`Seeding ${facilities.length} Facilities...`);
   for (const facility of facilities) {
     await dbCheckins.facility.upsert({
-      where: {name: facility.name!},
-      update: {},
       create: facility as Facility,
+      update: facility as Facility,
+      where: {name: facility.name!},
     });
   }
   console.log("Seeding Facilities successful.");
