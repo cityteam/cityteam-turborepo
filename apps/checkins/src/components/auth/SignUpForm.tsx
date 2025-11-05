@@ -2,8 +2,6 @@
 
 /**
  * Form for the Sign Up page.
- *
- * @packageDocumentation
  */
 
 // External Modules ----------------------------------------------------------
