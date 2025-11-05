@@ -3,6 +3,8 @@ packages:
   - packages/*
 
 catalogs:
+  babel:
+    babel-plugin-react-compiler: 1.0.0
   class-variance-authority:
     class-variance-authority: 0.7.1
   clsx:
@@ -12,65 +14,69 @@ catalogs:
   date-fns:
     date-fns: 4.1.0
   dotenvx:
-    "@dotenvx/dotenvx": ^1.51.0
+    "@dotenvx/dotenvx": 1.51.0
   eslint:
-    '@eslint/js': ^9.39.0
-    '@next/eslint-plugin-next': ^16.0.1
-    eslint: ^9.39.0
-    eslint-config-prettier: ^10.1.8
-    eslint-plugin-only-warn: ^1.1.0
-    eslint-plugin-react: ^7.37.5
-    eslint-plugin-react-hooks: ^5.2.0
-    eslint-plugin-turbo: ^2.6.0
-    globals: ^16.5.0
-    typescript-eslint: ^8.46.2
+    '@eslint/js': 9.39.0
+    '@next/eslint-plugin-next': 16.0.1
+    eslint: 9.39.0
+    eslint-config-next: 16.0.1
+    eslint-config-prettier: 10.1.8
+    eslint-plugin-only-warn: 1.1.0
+    eslint-plugin-react: 7.37.5
+    eslint-plugin-react-hooks: 5.2.0
+    eslint-plugin-turbo: 2.6.0
+    globals: 16.5.0
+    typescript-eslint: 8.46.2
   jest30:
-    '@types/jest': ^30.0.0
-    jest: ^30.2.0
-    jest-environment-jsdom: ^30.2.0
-    ts-jest: ^29.4.5
+    '@types/jest': 30.0.0
+    jest: 30.2.0
+    jest-environment-jsdom: 30.2.0
+    ts-jest: 29.4.5
   lucide-react:
     lucide-react: 0.552.0
   next16:
-    next: ^16.0.1
-    next-themes: ^0.4.6
+    next: 16.0.1
+    next-themes: 0.4.6
+  next-auth5:
+    '@auth/core': 0.41.0
+    next-auth: 5.0.0-beta.30
   node24:
-    '@types/node': ^24.9.2
+    '@types/node': 24.9.2
   pino:
-    pino: ^10.1.0
+    pino: 10.1.0
   postcss:
-    postcss: ^8.5.6
+    postcss: 8.5.6
   prettier:
-    prettier: ^3.6.2
+    prettier: 3.6.2
   prisma6:
-    "@prisma/adapter-pg": ^6.18.0
-    "@prisma/client": ^6.18.0
-    prisma: ^6.18.0
+    "@prisma/adapter-pg": 6.18.0
+    "@prisma/client": 6.18.0
+    prisma: 6.18.0
   react19:
-    "@types/react": ^19.2.2
-    '@types/react-dom': ^19.2.2
-    react: ^19.2.0
-    react-dom: ^19.2.0
+    "@types/react": 19.2.2
+    '@types/react-dom': 19.2.2
+    react: 19.2.0
+    react-dom: 19.2.0
   tailwind4:
-    '@tailwindcss/cli': ^4.1.16
-    '@tailwindcss/postcss': ^4.1.16
-    tailwind-merge: ^3.3.1
-    tailwindcss: ^4.1.16
-    tailwindcss-animate: ^1.0.7
-    tw-animate-css: ^1.4.0
+    '@tailwindcss/cli': 4.1.16
+    '@tailwindcss/postcss': 4.1.16
+    tailwind-merge: 3.3.1
+    tailwindcss: 4.1.16
+    tailwindcss-animate: 1.0.7
+    tw-animate-css: 1.4.0
   tanstack:
-    '@tanstack/react-form': ^1.23.8
-    '@tanstack/react-table': ^8.21.3
+    '@tanstack/react-form': 1.23.8
+    '@tanstack/react-table': 8.21.3
   tsup:
-    tsup: ^8.5.0
+    tsup: 8.5.0
   tsx:
-    tsx: ^4.20.6
+    tsx: 4.20.6
   typescript5:
-    typescript: ^5.9.3
+    typescript: 5.9.3
   vitest:
-    '@vitest/coverage-v8': ^4.0.6
-    '@vitest/ui': ^4.0.6
-    vite-tsconfig-paths: ^5.1.4
-    vitest: ^4.0.6
+    '@vitest/coverage-v8': 4.0.6
+    '@vitest/ui': 4.0.6
+    vite-tsconfig-paths: 5.1.4
+    vitest: 4.0.6
   zod:
     zod: 4.1.12

@@ -1,0 +1,49 @@
+{
+  "dependencies": {
+    "@auth/core": "catalog:next-auth5",
+    "@repo/db-checkins": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/shadcn-tanstack-form": "workspace:*",
+    "@repo/shadcn-tanstack-table": "workspace:*",
+    "@repo/shadcn-ui": "workspace:*",
+    "@repo/shared-utils": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/vitest-config": "workspace:*",
+    "@tanstack/react-form": "catalog:tanstack",
+    "@tanstack/react-table": "catalog:tanstack",
+    "clsx": "catalog:clsx",
+    "lucide-react": "catalog:lucide-react",
+    "next": "catalog:next16",
+    "next-auth": "catalog:next-auth5",
+    "pino": "catalog:pino",
+    "postcss": "catalog:postcss",
+    "react": "catalog:react19",
+    "react-dom": "catalog:react19",
+    "zod": "catalog:zod"
+  },
+  "description": "Guest Checkins for CityTeam",
+  "devDependencies": {
+    "@dotenvx/dotenvx": "catalog:dotenvx",
+    "babel-plugin-react-compiler": "catalog:babel",
+    "typescript": "catalog:typescript5",
+    "@types/node": "catalog:node24",
+    "@types/react": "catalog:react19",
+    "@types/react-dom": "catalog:react19",
+    "@tailwindcss/postcss": "catalog:tailwind4",
+    "tailwindcss": "catalog:tailwind4",
+    "eslint": "catalog:eslint",
+    "eslint-config-next": "catalog:eslint"
+  },
+  "name": "checkins",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --port 4010",
+    "lint": "eslint",
+    "start": "next start --port 4010",
+    "test": "dotenvx run -f .env.test --quiet -- vitest watch",
+    "test:ci": "dotenvx run -f .env.test --quiet -- vitest run"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}
