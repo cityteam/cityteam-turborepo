@@ -6,7 +6,7 @@
 
 import { SignInError } from "@auth/core/errors";
 import { Profile } from "@repo/db-checkins";
-import { serverLogger as logger } from "@repo/shared-utils/dist";
+import { serverLogger as logger } from "@repo/shared-utils/ServerLogger";
 import NextAuth, { DefaultSession /*, User*/ } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 

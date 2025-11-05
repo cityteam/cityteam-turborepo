@@ -1,6 +1,6 @@
 {
   "exports": {
-    "./*": "./dist/index.js"
+    "./*": "./dist/*.js"
   },
   "license": "Apache-2.0",
   "name": "@repo/shared-utils",
@@ -17,6 +17,7 @@
   "type": "module",
   "version": "0.0.0",
   "dependencies": {
+    "bcrypt-ts": "catalog:bcrypt-ts",
     "date-fns": "catalog:date-fns",
     "pino": "catalog:pino",
     "zod": "catalog:zod"

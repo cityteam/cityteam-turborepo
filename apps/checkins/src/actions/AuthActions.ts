@@ -7,6 +7,7 @@
 // External Modules ----------------------------------------------------------
 
 import { dbCheckins, Profile } from "@repo/db-checkins";
+import { hashPassword } from "@repo/shared-utils/Encryption";
 import { Result, ValidationResult } from "@repo/shared-utils/Result";
 import { serverLogger as logger } from "@repo/shared-utils/ServerLogger";
 import { ZodError } from "zod";
@@ -14,7 +15,6 @@ import { ZodError } from "zod";
 // Internal Modules ----------------------------------------------------------
 
 import { signIn, signOut } from "@/auth";
-import { hashPassword } from "@/lib/Encryption";
 import { SignInSchema, type SignInSchemaType } from "@/zod-schemas/SignInSchema";
 import { SignUpSchema, type SignUpSchemaType } from "@/zod-schemas/SignUpSchema";
 

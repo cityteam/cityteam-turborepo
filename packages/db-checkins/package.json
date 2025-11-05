@@ -30,6 +30,7 @@
   "dependencies": {
     "@dotenvx/dotenvx": "catalog:dotenvx",
     "@prisma/adapter-pg": "catalog:prisma6",
-    "@prisma/client": "catalog:prisma6"
+    "@prisma/client": "catalog:prisma6",
+    "@repo/shared-utils": "workspace:*"
   }
 }

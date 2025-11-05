@@ -44,8 +44,8 @@
     "dev": "next dev --port 4010",
     "lint": "eslint",
     "start": "next start --port 4010",
-    "test": "dotenvx run -f .env.test --quiet -- vitest watch",
-    "test:ci": "dotenvx run -f .env.test --quiet -- vitest run"
+    "xtest": "dotenvx run -f .env.test --quiet -- vitest watch",
+    "xtest:ci": "dotenvx run -f .env.test --quiet -- vitest run"
   },
   "type": "module",
   "version": "0.1.0"

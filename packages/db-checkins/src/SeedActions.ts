@@ -7,6 +7,7 @@
 // External Imports ----------------------------------------------------------
 
 import { dbCheckins, Facility } from "@repo/db-checkins";
+//import { hashPassword } from "@repo/shared-utils/Encryption";
 import { exit } from "node:process";
 
 // Public Actions ------------------------------------------------------------
