@@ -14,9 +14,234 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  user_id Int     @id @default(autoincrement())
-  name    String?
-  email   String  @unique
-  isAdmin Boolean @default(false)
+/// A temporary or permanent ban on accepting a particular Guest
+/// into a Facility, for a specified date range.
+model Ban {
+  /// Primary key for this Ban
+  id         String   @id @default(uuid())
+  /// Is this Ban currently active?
+  active     Boolean  @default(true)
+  /// Created at timestamp
+  createdAt  DateTime @default(now()) @map("created_at")
+  /// End date for this Ban
+  endDate    DateTime @map("end_date") @db.Date
+  /// Facility ID of the Facility where this Ban is in effect
+  facilityId String   @map("facility_id") @db.Text
+  /// Guest ID of the Guest who is banned
+  guestId    String   @map("guest_id") @db.Text
+  /// Reason for this Ban
+  reason     String   @db.Text
+  /// Start date for this Ban
+  startDate  DateTime @map("start_date") @db.Date
+  /// Updated at timestamp
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  /// Facility where this Ban is in effect
+  facility Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  /// Guest who is banned
+  guest    Guest    @relation(fields: [guestId], references: [id], onDelete: Cascade)
+
+  @@index([facilityId, guestId], name: "idx_facility_guest")
+  @@map("bans")
+}
+
+/// A CityTeam Facility that accomodates Guests managed with this application.
+model Facility {
+  /// Primary key for this Facility
+  id        String   @id @default(uuid())
+  /// Is this Facility currently active?
+  active    Boolean  @default(true)
+  /// First address line for this Facility
+  address1  String   @db.Text
+  /// Second address line for this Facility
+  address2  String?  @db.Text
+  /// City for this Facility
+  city      String   @db.Text
+  /// Created at timestamp
+  createdAt DateTime @default(now()) @map("created_at")
+  /// Name of this Facility
+  name      String   @db.Text
+  /// Phone number for this Facility
+  phone     String?  @db.Text
+  /// State for this Facility
+  state     String   @db.Text
+  /// Updated at timestamp
+  updatedAt DateTime @updatedAt @map("updated_at")
+  /// ZIP code for this Facility
+  zipCode   String   @map("zip_code") @db.Text
+
+  /// Bans in effect at this Facility
+  bans      Ban[]
+  /// Guests who have checked in at this Facility
+  guests    Guest[]
+  /// Mats available or in use at this Facility
+  mats      Mat[]
+  /// Memberships of Profiles to this Facility
+  members   Member[]
+  /// Templates for generating Mats at this Facility
+  templates Template[]
+
+  @@index([name])
+  @@map("facilities")
+}
+
+/// A Guest who has ever checked in at a CityTeam Facility.
+model Guest {
+  /// Primary key for this Guest
+  id         String   @id @default(uuid())
+  /// Is this Guest currently active?
+  active     Boolean  @default(true)
+  /// Created at timestamp
+  createdAt  DateTime @default(now()) @map("created_at")
+  /// Facility ID of the Facility where this Guest has checked in
+  facilityId String   @map("facility_id") @db.Text
+  /// First name of this Guest
+  firstName  String   @map("first_name") @db.Text
+  /// Last name of this Guest
+  lastName   String   @map("last_name") @db.Text
+  /// Miscellaneous notes about this Guest
+  notes      String?  @db.Text
+  /// Updated at timestamp
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  /// Bans associated with this Guest
+  bans     Ban[]
+  /// Facility this Guest has checked in at
+  facility Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  /// Mats ever assigned to this Guest
+  mats     Mat[]
+
+  @@index([facilityId, lastName, firstName], name: "idx_facility_last_first_name")
+  @@map("guests")
+}
+
+/// An overnight mat available on a specific date, at a specific Facility,
+/// optionally assigned to a specific Guest.
+model Mat {
+  /// Primary key for this Mat
+  id            String       @id @default(uuid())
+  /// Date for which this Mat is available or in use
+  checkinDate   DateTime     @map("checkin_date") @db.Date
+  /// Created at timestamp
+  createdAt     DateTime     @default(now()) @map("created_at")
+  /// Facility ID of the Facility where this Mat is located
+  facilityId    String       @map("facility_id") @db.Text
+  /// Guest ID of the Guest assigned to this Mat (if any)
+  guestId       String?      @map("guest_id") @db.Text
+  /// Mat number within the Facility
+  matNumber     Int          @map("mat_number") @db.Integer
+  /// Miscellaneous otes about this Mat assignment
+  notes         String?      @db.Text
+  /// Payment amount associated with this Mat (if any)
+  paymentAmount Float?       @map("payment_amount") @db.Real
+  /// Payment type associated with this Mat (if any)
+  paymentType   PaymentType? @map("payment_type")
+  /// Updated at timestamp
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+
+  // TODO: showerTime, wakeupTime?
+
+  /// Facility where this Mat is located
+  facility Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  /// Guest assigned to this Mat (if any)
+  guest    Guest?   @relation(fields: [guestId], references: [id], onDelete: SetNull)
+
+  @@index([facilityId, checkinDate, matNumber], name: "idx_facility_checkin_date_mat_number")
+  @@map("mats")
+}
+
+/// Relationship between a Facility and a Profile indicating
+/// that the Profile has access rights for the Facility.
+model Member {
+  /// Primary key for this Member
+  id         String   @id @default(uuid())
+  /// Is this Member currently active?
+  active     Boolean  @default(true)
+  /// Does this Member have admin rights for the Facility?
+  admin      Boolean  @default(false)
+  /// Created at timestamp
+  createdAt  DateTime @default(now()) @map("created_at")
+  /// Facility ID of the Facility this Member belongs to
+  facilityId String   @map("facility_id") @db.Text
+  /// Profile ID of the Profile this Member belongs to
+  profileId  String   @map("profile_id") @db.Text
+  /// Updated at timestamp
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  /// Facility this Member belongs to
+  facility Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  /// Profile this Member belongs to
+  profile  Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([facilityId])
+  @@index([profileId])
+  @@map("members")
+}
+
+/// Payment Type for Mats at a Facility.
+enum PaymentType {
+  /// Agency Paid
+  AG
+  /// Cash
+  CA
+  /// CityTeam Allowed
+  CT
+  /// Free Mat
+  FM
+  /// Medical Mat
+  MM
+  /// Severe Weather
+  SW
+  /// Unknown
+  UK
+  /// Work Mat
+  WB
+}
+
+/// Profile for a local user.  Separate from a User model in order to allow
+/// for different authentication packages.
+model Profile {
+  /// Primary key for this Profile
+  id        String   @id @default(uuid())
+  /// Created at timestamp
+  createdAt DateTime @default(now()) @map("created_at")
+  /// Email address for this Profile
+  email     String   @unique @db.Text
+  /// Display name for this Profile
+  name      String   @db.Text
+  /// Password for this Profile (encrypted in the database)
+  password  String   @db.Text
+  /// Updated at timestamp
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  /// Memberships of this Profile to Facilities
+  members Member[]
+
+  @@index([email])
+  @@map("profiles")
+}
+
+/// Template for generating Mats for Checkins at a particular
+/// Facility on a particular Checkin date.
+model Template {
+  /// Primary key for this MatTemplate
+  id         String   @id @default(uuid())
+  /// Created at timestamp
+  createdAt  DateTime @default(now()) @map("created_at")
+  /// Facility ID of the Facility where this Template is used
+  facilityId String   @map("facility_id") @db.Text
+  /// Mat numbers for which to generate Checkins
+  matNumbers String   @map("mat_numbers") @db.Text
+  /// Name of this Template
+  name       String   @db.Text
+  /// Miscellaneous notes about this Template
+  notes      String?  @db.Text
+  /// Updated at timestamp
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  /// Facility where this Template is used
+  facility Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+
+  @@index([facilityId, name], name: "idx_facility_name")
+  @@map("templates")
 }
