@@ -16,7 +16,7 @@ catalogs:
   date-fns:
     date-fns: 4.1.0
   dotenvx:
-    "@dotenvx/dotenvx": 1.51.0
+    '@dotenvx/dotenvx': 1.51.0
   eslint:
     '@eslint/js': 9.39.0
     '@next/eslint-plugin-next': 16.0.1
@@ -36,12 +36,12 @@ catalogs:
     ts-jest: 29.4.5
   lucide-react:
     lucide-react: 0.552.0
-  next16:
-    next: 16.0.1
-    next-themes: 0.4.6
   next-auth5:
     '@auth/core': 0.41.0
     next-auth: 5.0.0-beta.30
+  next16:
+    next: 16.0.1
+    next-themes: ^0.4.6
   node24:
     '@types/node': 24.9.2
   pino:
@@ -51,11 +51,11 @@ catalogs:
   prettier:
     prettier: 3.6.2
   prisma6:
-    "@prisma/adapter-pg": 6.18.0
-    "@prisma/client": 6.18.0
+    '@prisma/adapter-pg': 6.18.0
+    '@prisma/client': 6.18.0
     prisma: 6.18.0
   react19:
-    "@types/react": 19.2.2
+    '@types/react': 19.2.2
     '@types/react-dom': 19.2.2
     react: 19.2.0
     react-dom: 19.2.0
