@@ -10,7 +10,7 @@ import { SignUpForm } from "@/components/auth/SignUpForm";
 
 export default function SignUpPage() {
   return (
-    <main className="flex w-full items-center justify-center h-[calc(100vh-80px)] p-4">
+    <main className="flex w-full items-center justify-center p-4">
       <SignUpForm />
     </main>
   )

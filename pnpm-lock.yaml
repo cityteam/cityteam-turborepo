@@ -250,6 +250,9 @@ importers:
       next-auth:
         specifier: catalog:next-auth5
         version: 5.0.0-beta.30(next@16.0.1(@babel/core@7.28.5)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      next-themes:
+        specifier: catalog:next16
+        version: 0.4.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       pino:
         specifier: catalog:pino
         version: 10.1.0
