@@ -5,6 +5,8 @@ packages:
 catalogs:
   babel:
     babel-plugin-react-compiler: 1.0.0
+  bcrypt-ts:
+    bcrypt-ts: 7.1.0
   class-variance-authority:
     class-variance-authority: 0.7.1
   clsx:
@@ -57,6 +59,8 @@ catalogs:
     '@types/react-dom': 19.2.2
     react: 19.2.0
     react-dom: 19.2.0
+  sonner:
+    sonner: 2.0.7
   tailwind4:
     '@tailwindcss/cli': 4.1.16
     '@tailwindcss/postcss': 4.1.16

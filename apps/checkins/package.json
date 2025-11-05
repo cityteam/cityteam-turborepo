@@ -11,6 +11,7 @@
     "@repo/vitest-config": "workspace:*",
     "@tanstack/react-form": "catalog:tanstack",
     "@tanstack/react-table": "catalog:tanstack",
+    "bcrypt-ts": "catalog:bcrypt-ts",
     "clsx": "catalog:clsx",
     "lucide-react": "catalog:lucide-react",
     "next": "catalog:next16",
@@ -19,6 +20,7 @@
     "postcss": "catalog:postcss",
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
+    "sonner": "catalog:sonner",
     "zod": "catalog:zod"
   },
   "description": "Guest Checkins for CityTeam",
