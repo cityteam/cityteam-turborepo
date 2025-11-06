@@ -44,46 +44,40 @@ export function SignInForm() {
   const form = useAppForm({
     defaultValues,
     onSubmit: async ({ value }) => {
-      await submitForm(value);
+      logger.info({
+        context: "SignInForm.onSubmit.input",
+        value: {
+          ...value,
+          password: "*REDACTED*",
+        }
+      });
+      const result = await doSignInAction(value);
+      if (result.model) {
+
+        logger.info({
+          context: "SignInForm.onSubmit.success",
+          email: value.email,
+        });
+        setResult(null);
+        toast.success("Welcome to the Checkins application!");
+        router.push("/"); // TODO - choose a better landing page
+
+      } else {
+
+        logger.info({
+          context: "SignInForm.onSubmit.error",
+          error: result.message,
+        });
+        setResult({ message: "Invalid email or password, please try again" });
+
+      }
     },
     validators: {
       onBlur: SignInSchema,
       onChange: SignInSchema,
+      onSubmit: SignInSchema,
     },
   });
-
-  async function submitForm(formData: SignInSchemaType) {
-
-    logger.trace({
-      context: "SignInForm.submitForm.input",
-      formData: {
-        ...formData,
-        password: "*REDACTED*",
-      }
-    });
-
-    const result = await doSignInAction(formData);
-    if (result.model) {
-
-      logger.trace({
-        context: "SignInForm.submitForm.success",
-        email: formData.email,
-      });
-      setResult(null);
-      toast.success("Welcome to the Checkins application!");
-      router.push("/"); // TODO - choose a better landing page
-
-    } else {
-
-      logger.trace({
-        context: "SignInForm.submitForm.error",
-        error: result.message,
-      });
-      setResult({ message: "Invalid email or password, please try again" });
-
-    }
-
-  }
 
   return (
     <Card className="w-96 bg-secondary text-secondary-foreground border-2 rounded-2xl">

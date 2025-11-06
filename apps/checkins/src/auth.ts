@@ -13,7 +13,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 // Internal Modules ----------------------------------------------------------
 
 import { dbCheckins } from "@repo/db-checkins";
-import { verifyPassword } from "./lib/Encryption";
+import { verifyPassword } from "@repo/shared-utils/Encryption";
 import { SignInSchemaType } from "@/zod-schemas/SignInSchema";
 
 // Public Objects ------------------------------------------------------------
@@ -184,6 +184,8 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     }),
 
   ],
+
+  secret: process.env.AUTH_SECRET, // Used to encrypt JWT tokens
 
   session: {
     strategy: "jwt",

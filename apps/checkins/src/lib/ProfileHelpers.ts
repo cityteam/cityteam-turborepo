@@ -43,7 +43,7 @@ export async function findProfile(): Promise<Profile | null> {
   if (!session || !session.user || !session.user.profile) {
     return null;
   }
-  logger.trace({
+  logger.info({
     context: "findProfile",
     user: session.user,
   });

@@ -10,6 +10,7 @@ import { dbCheckins, Profile } from "@repo/db-checkins";
 import { hashPassword } from "@repo/shared-utils/Encryption";
 import { Result, ValidationResult } from "@repo/shared-utils/Result";
 import { serverLogger as logger } from "@repo/shared-utils/ServerLogger";
+import { revalidatePath } from "next/cache";
 import { ZodError } from "zod";
 
 // Internal Modules ----------------------------------------------------------
@@ -74,6 +75,7 @@ export async function doSignInAction(formData: SignInSchemaType): Promise<Result
       password: "*REDACTED*",
       updatedAt: new Date(),
     };
+    revalidatePath("/");
     return ({ model: profile });
 
   } catch (error) {
@@ -105,6 +107,7 @@ export async function doSignOutAction(): Promise<Result<null>> {
     logger.trace({
       context: "doSignOutAction.output",
     });
+    revalidatePath("/");
     return ({message: "Success"});
 
   } catch (error) {

@@ -13,7 +13,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 // Internal Imports ----------------------------------------------------------
 
 import { NavBar } from "@/components/layout/NavBar";
-// TODO: CurrentProfileContextProvider?
+
+
+// Public Objects ------------------------------------------------------------`
 
 export const metadata: Metadata = {
   title: "Checkins",
@@ -40,7 +42,7 @@ export default function RootLayout({
           <main className={"bg-base-100 h=[calc(100vh-60px)]"}>
             {children}
           </main>
-          <Toaster position="top-right" richColors />
+          <Toaster position="bottom-right" richColors />
         </ThemeProvider>
       </body>
     </html>
