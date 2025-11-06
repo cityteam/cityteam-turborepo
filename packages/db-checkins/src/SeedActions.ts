@@ -6,8 +6,9 @@
 
 // External Imports ----------------------------------------------------------
 
-import { dbCheckins, Facility } from "@repo/db-checkins";
-//import { hashPassword } from "@repo/shared-utils/Encryption";
+import { dbCheckins, Facility, Member, Profile } from "@repo/db-checkins";
+import { hashPassword } from "@repo/shared-utils/Encryption";
+import { serverLogger as logger } from "@repo/shared-utils/ServerLogger";
 import { exit } from "node:process";
 
 // Public Actions ------------------------------------------------------------
@@ -88,26 +89,86 @@ const facilities: Partial<Facility>[] = [
   }
 ];
 
+const seededFacilities: Facility[] = [];
+
+const password = process.env.SUPERUSER_PASSWORD || undefined;
+const profile: Partial<Profile> = {
+  email: process.env.SUPERUSER_EMAIL || undefined,
+  name: process.env.SUPERUSER_NAME || undefined,
+  password: password ? hashPassword(password) : undefined,
+}
+
 async function main() {
 
-  console.log(`Seeding ${facilities.length} Facilities...`);
+  // Seed Facilities
+  logger.info({
+    context: `Seeding ${facilities.length} Facilities`,
+  });
   for (const facility of facilities) {
-    await dbCheckins.facility.upsert({
+    const seededFacility = await dbCheckins.facility.upsert({
       create: facility as Facility,
       update: facility as Facility,
       where: {name: facility.name!},
     });
+    seededFacilities.push(seededFacility);
   }
-  console.log("Seeding Facilities successful.");
+  logger.info({
+    context: `Seeding ${facilities.length} Facilities successful`,
+  })
+
+  // Seed Superuser Profile and Members
+  if (profile.email && profile.name && profile.password) {
+    logger.info({
+      context: `Seeding superuser Profile and ${facilities.length} Members`
+    });
+    const superuserProfile = await dbCheckins.profile.upsert({
+      create: profile as Profile,
+      update: profile as Profile,
+      where: {email: profile.email},
+    });
+    for (const facility of seededFacilities) {
+      const proposedMember: Partial<Member> = {
+        active: true,
+        admin: true,
+        facilityId: facility.id,
+        profileId: superuserProfile.id,
+      }
+      const existingMember = await dbCheckins.member.findFirst({
+        where: {
+          facilityId: facility.id,
+          profileId: superuserProfile.id,
+        }
+      });
+      if (!existingMember) {
+        await dbCheckins.member.create({
+          data: proposedMember as Member,
+        });
+      } else {
+        await dbCheckins.member.update({
+          data: proposedMember as Member,
+          where: {id: existingMember.id},
+        });
+      }
+    }
+  } else {
+    logger.error({
+      context: "Superuser Profile not created - missing environment variables",
+    });
+  }
 
 }
 
 main()
 .then(() => {
-  console.log("Seeding completed successfully.");
+  logger.info({
+    context: "Seeding completed successfully",
+  });
   exit(0);
 })
 .catch((error) => {
-  console.error(error);
+  console.error({
+    context: "Seeding failed",
+    error,
+  });
   exit(1);
 });

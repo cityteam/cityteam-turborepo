@@ -175,8 +175,7 @@ model Member {
   /// Profile this Member belongs to
   profile  Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
-  @@index([facilityId])
-  @@index([profileId])
+  @@index([facilityId, profileId], name: "idx_facility_profile")
   @@map("members")
 }
 
