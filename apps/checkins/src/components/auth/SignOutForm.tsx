@@ -54,6 +54,7 @@ export function SignOutForm() {
       });
 
       toast.success("Sign out successful");
+      router.refresh();
       router.push("/"); // TODO redirect to home page or login page
 
     } catch (error) {

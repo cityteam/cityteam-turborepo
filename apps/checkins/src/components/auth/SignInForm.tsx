@@ -60,6 +60,7 @@ export function SignInForm() {
         });
         setResult(null);
         toast.success("Welcome to the Checkins application!");
+        router.refresh();
         router.push("/"); // TODO - choose a better landing page
 
       } else {
